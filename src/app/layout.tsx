@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ReactQueryClientProvider } from "@/components/ReactQueryClientProvider";
-import DataDisplay from "@/components/DataDisplay";
-
+//import { ReactQueryClientProvider } from "@/components/ReactQueryClientProvider";
+//import DataDisplay from "@/components/DataDisplay";
+import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
+import { ApolloClientProvider } from "@/components/ApolloWrap";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -17,10 +18,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ReactQueryClientProvider>
+    <ApolloClientProvider>
     <html lang="en">
       <body className={inter.className}>{children}</body>
     </html>
-    </ReactQueryClientProvider>
+    </ApolloClientProvider>
   );
 }
